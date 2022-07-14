@@ -127,13 +127,11 @@ function basketValidation(product, productBtn, productBtnText) {
 
   if (isExistInUserBasket) {
     productBtnText.innerHTML = '<i class="bi bi-cart-x"></i>';
-    showAlert(
-      "red-alert",
-      "Item already exists in basket",
-      "bi-info-circle-fill"
-    );
+    showAlert("red-alert", "Item already exists in basket", "bi-info-circle-fill");
   } else {
+    product.count++;
     userBasket.push(product);
+
     setUserBasketInToLocalStorage(userBasket);
     productBtnText.innerHTML = '<i class="bi bi-cart-check pb-3"></i>';
     showAlert("green-alert", "Item added to your basket", "bi-bag-check-fill");
@@ -190,7 +188,7 @@ function removeAlert(alertElem) {
 }
 
 
-// event listener
+// event listener /////////////////////
 window.addEventListener("load", themeCheckByLocalStorage);
 window.addEventListener("load", getUserBasketFromLocalStorage);
 window.addEventListener("load", getMainItem);
