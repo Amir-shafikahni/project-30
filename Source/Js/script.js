@@ -481,7 +481,6 @@ function setLightTheme() {
   document.documentElement.style.setProperty("--text-color", "#000");
   document.documentElement.style.setProperty("--box-shadow", "#0000001a");
   document.documentElement.style.setProperty("--border-color", "#00000033");
-  document.documentElement.style.setProperty("--btn-hover", "#ffffff");
 
   setThemeToLocalStorage("light");
 }
@@ -496,7 +495,6 @@ function setDarkTheme() {
   document.documentElement.style.setProperty("--text-color", "#f5f5f5");
   document.documentElement.style.setProperty("--box-shadow", "#ffffff33");
   document.documentElement.style.setProperty("--border-color", "#ffffff4d");
-  document.documentElement.style.setProperty("--btn-hover", "#ffffff");
 
   setThemeToLocalStorage("dark");
 }
@@ -514,8 +512,7 @@ function paginationBtnsGenerator() {
   for (let i = 1; i <= btnsCount; i++) {
     let paginationBtn = $.createElement("button");
     paginationBtn.innerHTML = i;
-    paginationBtn.className =
-      "pagiantion-btn pagiantion-btn-" + i + " btn btn-outline-primary me-1";
+    paginationBtn.className ="pagiantion-btn pagiantion-btn-" + i + " btn btn-outline-primary me-1";
     paginationBtn.setAttribute("onclick", "updateCurrentPageNumber(" + i + ")");
 
     pagiantionBtnsFragment.append(paginationBtn);

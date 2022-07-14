@@ -56,6 +56,7 @@ function getUserBasketFromLocalStorage() {
   updateBasketItemsCount(userBasket)
 }
 
+// to update basket items count and append it do dom
 function updateBasketItemsCount (userBasket){
   basketItemsCountElem.innerHTML = userBasket.length
 }
@@ -65,6 +66,7 @@ function setUserBasketInToLocalStorage(userBasket) {
   localStorage.setItem("userBasket", JSON.stringify(userBasket));
 }
 
+// to create a template for cart items and append it to dom
 function cartItemsGenerator(cartItemsArray){
   cartBodyContainer.innerHTML = ""
   let cartItemsFragment = $.createDocumentFragment()
@@ -97,6 +99,7 @@ function cartItemsGenerator(cartItemsArray){
 
   cartBodyContainer.append(cartItemsFragment)
 
+  // to set block or none display to trash or minus btns based on items count
   cartItemsArray.forEach(function(item){
     if(item.count > 1){
       let itemTrashBtn = $.getElementById("trash-btn"+ item.id+ "")
@@ -108,6 +111,7 @@ function cartItemsGenerator(cartItemsArray){
   })
 }
 
+// to add the item count by +1
 function itemCountPlus(itemId){
   userBasket.forEach(function(product){
     if(product.id === itemId && product.count < 10){
@@ -123,6 +127,7 @@ function itemCountPlus(itemId){
   })
 }
 
+// to minus the item count by -1
 function itemCountMinus(itemId){
   userBasket.forEach(function(product){
     if(product.id === itemId){
@@ -138,6 +143,7 @@ function itemCountMinus(itemId){
   })
 }
 
+// to remove an item from user basket  
 function itemRemover(itemId){
   userBasket = userBasket.filter(function(item){
     return item.id !== itemId
@@ -150,6 +156,7 @@ function itemRemover(itemId){
   showAlert("red-alert" , "Item removed from basket" , "bi-info-circle-fill")
 }
 
+// to update total user basket items price and append it to dom
 function totalPriceUpdater(userBasket){
   let itemsTotalPrice = 0
 
@@ -167,13 +174,9 @@ function showAlert(alertName, alertMsg, alertIcon) {
 
   alertElem.insertAdjacentHTML(
     "beforeend",
-    '<span class="warning-icon bi ' +
-      alertIcon +
-      '"></span>' +
-      '<span class="msg">' +
-      alertMsg +
-      "</span>" +
-      '<span class="close-btn bi bi-x-lg" onclick="getAlertElem(event)"></span>'
+    '<span class="warning-icon bi '+ alertIcon +'"></span>' +
+    '<span class="msg">'+ alertMsg +"</span>" +
+    '<span class="close-btn bi bi-x-lg" onclick="getAlertElem(event)"></span>'
   );
 
   alertsContainer.append(alertElem);
@@ -205,6 +208,7 @@ function hideAlert(alertElem) {
 function removeAlert(alertElem) {
   alertElem.remove();
 }
+
 
 // event listeners /////////////////////// 
 window.addEventListener("load", themeCheckByLocalStorage);

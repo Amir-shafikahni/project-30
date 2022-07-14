@@ -267,10 +267,10 @@ body{
     bottom: 0;
     width: 20px;
     height: 20px;
+    transition: 0.2s;
     border-radius: 50%;
     border-top: 3px solid var(--primary-color);
     animation: button-loading-spinner 1s ease infinite;
-    transition: 0.2s;
 }
 
 .button-loading:hover:after{

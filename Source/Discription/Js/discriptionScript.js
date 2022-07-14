@@ -148,12 +148,8 @@ function showAlert(alertName, alertMsg, alertIcon) {
 
   alertElem.insertAdjacentHTML(
     "beforeend",
-    '<span class="warning-icon bi ' +
-      alertIcon +
-      '"></span>' +
-      '<span class="msg">' +
-      alertMsg +
-      "</span>" +
+    '<span class="warning-icon bi '+alertIcon +'"></span>' +
+      '<span class="msg">'+alertMsg +'</span>' +
       '<span class="close-btn bi bi-x-lg" onclick="getAlertElem(event)"></span>'
   );
 
