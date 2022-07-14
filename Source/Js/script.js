@@ -4,6 +4,7 @@ let $ = document;
 
 // variables //////////////////
 const body = $.body;
+const basketItemsCountElem = $.querySelector(".basket-items-count");
 const themeContainer = $.querySelector(".theme-container");
 const themeBall = $.querySelector(".ball");
 const themIcon = $.querySelector(".theme-icon");
@@ -418,6 +419,7 @@ let shopProducts = [
   },
 ];
 
+localStorage.setItem("shopProducts", JSON.stringify(shopProducts));
 let userBasket = [];
 
 let rowsPerPage = 8;
@@ -425,7 +427,26 @@ let currentPageNumber = 1;
 
 
 // functions /////////////////////
-// to change the theme on load
+// to get user basket from local storage on load
+function getUserBasketFromLocalStorage() {
+  let basket = JSON.parse(localStorage.getItem("userBasket"));
+
+  if (basket) {
+    userBasket = basket;
+  } else {
+    userBasket = [];
+    setUserBasketInToLocalStorage(userBasket);
+  }
+
+  basketItemsCountElem.innerHTML = userBasket.length;
+}
+
+// to set user basket in to local storage
+function setUserBasketInToLocalStorage(userBasket) {
+  localStorage.setItem("userBasket", JSON.stringify(userBasket));
+}
+
+// to check and apply the theme on load
 function themeCheckByLocalStorage() {
   let theme = localStorage.getItem("theme");
 
@@ -434,6 +455,7 @@ function themeCheckByLocalStorage() {
   } else if (theme === "light") {
     setLightTheme();
   } else {
+    setLightTheme();
     setThemeToLocalStorage("light");
   }
 }
@@ -468,14 +490,11 @@ function setLightTheme() {
 function setDarkTheme() {
   themeBall.style.backgroundColor = "var(--text-color)";
   themeBall.style.transform = "translateX(20px)";
-  themIcon.className = "bi bi-brightness-high";
+  themIcon.className = "bi bi-brightness-alt-high-fill";
 
   document.documentElement.style.setProperty("--theme-background", "#000");
   document.documentElement.style.setProperty("--text-color", "#f5f5f5");
-  document.documentElement.style.setProperty(
-    "--box-shadow",
-    "rgba(255,255,255,0.27)"
-  );
+  document.documentElement.style.setProperty("--box-shadow", "#ffffff33");
   document.documentElement.style.setProperty("--border-color", "#ffffff4d");
   document.documentElement.style.setProperty("--btn-hover", "#ffffff");
 
@@ -560,7 +579,7 @@ function domUpdater(itemsArray) {
     cardItemContainer.className =
       "card-item-contianer col-12 col-md-6 col-lg-4 mb-4";
 
-    let sumTitle = item.discription.slice(0, 150);
+    let sumTitle = item.discription.slice(0, 115);
 
     cardItemContainer.insertAdjacentHTML("beforeend" ,
       '<div class="card-item">'+
@@ -571,7 +590,7 @@ function domUpdater(itemsArray) {
           '<h5 class="card-item-title my-2">'+ item.title +'</h5>'+
           '<div class="card-item-description mb-3">'+ sumTitle+'...</div>'+
           '<h5 class="card-item-price text-end">'+ item.price +'$</h5>'+
-          '<a href="" class="card-item-btn btn" title="Click to see more info">See More</a>'+
+          '<a href="./discription.html?id='+ item.id +'" class="card-item-btn btn" title="Click to see more info">See More</a>'+
         '</div>'+
       '</div>'
     )
@@ -586,7 +605,8 @@ function domUpdater(itemsArray) {
 
 
 // event listeners ///////////////
+window.addEventListener("load", getUserBasketFromLocalStorage);
+window.addEventListener("load", themeCheckByLocalStorage);
 window.addEventListener("load", paginationBtnsGenerator);
 window.addEventListener("load", getLastPageNumberFromLocalStorage);
-window.addEventListener("load", themeCheckByLocalStorage);
 themeContainer.addEventListener("click", changeTheme);

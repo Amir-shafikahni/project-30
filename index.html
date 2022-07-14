@@ -16,12 +16,12 @@
     <section id="header" class="container-fluid">
             <div class="logo-container ms-3 ms-md-5">
                 <a href="index.html">
-                    <img class="img-fluid" src="./Source/Media/Img/logo/logo" alt="logo">
+                    <img class="img-fluid" src="./Source/Media/Img/logo/logo.png" alt="logo">
                 </a>
             </div>
-            <ul class="navbar-container me-3 me-md-5">
-                <li class="navbar-item">Basket</li>
-                <li class="navbar-item ms-4">Shop</li>
+            <ul class="navbar-container me-3 me-md-5 pt-3">
+                <a href=""><li class="navbar-item me-2">Basket <div class="basket-items-count">0</div></li></a>
+                <a class="docoration-none" href="./index.html"><li class="navbar-item ms-4">Shop</li></a>
             </ul>
     </section>
     <section id="body" class="container-fluid">
@@ -35,8 +35,8 @@
         
         <div class="container">
             <div class="row mb-2">
-                <div class="col-12 m-auto">Items</div>
-                <hr class="mt-2">
+                <div class="items-title col-12 m-auto">Items</div>
+                <hr class="line mt-2">
             </div>
             <div class="shop-items-container row">
 
@@ -50,7 +50,7 @@
                             <h5 class="card-item-title my-2">Title</h5>
                             <div class="card-item-description mb-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere, doloribus laboriosam deleniti soluta nam, earum ipsam, voluptatibus ipsum cum nihil temporibus tempora commodi sunt expedita voluptate voluptatem. Debitis, voluptate quia.</div>
                             <h5 class="card-item-price text-end">Price$</h5>
-                            <button class="card-item-btn btn btn-outline-info" title="Click to see more info">See More</button>
+                            <a href="./discription.html?id='+ item.id +'" class="card-item-btn btn" title="Click to see more info">See More</a>
                         </div>
                     </div>
                 </div> -->
@@ -67,7 +67,6 @@
     <section id="footer">
         <div class="copy-right text-center">Copy Right © - 2022 all rights reserves</div>
     </section>
-
 
     <!-- BootStrap Js -->
     <script src="./Source/BootStrap/Js/bootstrap.bundle.js"></script>
