@@ -123,7 +123,7 @@ body{
 .costumized-scroll-bar{
     background-color: var(--primary-color);
     border-radius: 15px;
-    height: 2px;
+    height: 3px;
     width: 0;
     position: fixed;
     top: 0;
