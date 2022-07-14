@@ -4,6 +4,7 @@ let $ = document;
 
 // variables //////////////////
 const body = $.body;
+const costumizedScrollBar = $.querySelector(".costumized-scroll-bar")
 const basketItemsCountElem = $.querySelector(".basket-items-count");
 const themeContainer = $.querySelector(".theme-container");
 const themeBall = $.querySelector(".ball");
@@ -427,6 +428,17 @@ let currentPageNumber = 1;
 
 
 // functions /////////////////////
+// make a costume scroll bar on top
+function costumeScroll(){
+  let bodyHeight = body.clientHeight
+  let scrollHeight = window.scrollY
+  let userScreenHeight = window.innerHeight
+
+  let scrollPercent = Math.ceil((scrollHeight/(bodyHeight - userScreenHeight)) *100) + "%"
+
+  costumizedScrollBar.style.width = scrollPercent
+}
+
 // to get user basket from local storage on load
 function getUserBasketFromLocalStorage() {
   let basket = JSON.parse(localStorage.getItem("userBasket"));
@@ -606,4 +618,5 @@ window.addEventListener("load", getUserBasketFromLocalStorage);
 window.addEventListener("load", themeCheckByLocalStorage);
 window.addEventListener("load", paginationBtnsGenerator);
 window.addEventListener("load", getLastPageNumberFromLocalStorage);
+window.addEventListener("scroll" , costumeScroll)
 themeContainer.addEventListener("click", changeTheme);

@@ -4,6 +4,7 @@ let $ = document;
 
 // variables //////////////////
 const body = $.body;
+const costumizedScrollBar = $.querySelector(".costumized-scroll-bar")
 const basketItemsCountElem = $.querySelector(".basket-items-count");
 const goBackBtn = $.querySelector(".go-back-btn");
 const alertsContainer = $.querySelector(".alerts-container");
@@ -14,6 +15,17 @@ let isExistInUserBasket = false;
 
 
 // functions /////////////////////
+// make a costume scroll bar on top
+function costumeScroll(){
+  let bodyHeight = body.clientHeight
+  let scrollHeight = window.scrollY
+  let userScreenHeight = window.innerHeight
+
+  let scrollPercent = Math.ceil((scrollHeight/(bodyHeight - userScreenHeight)) *100) + "%"
+
+  costumizedScrollBar.style.width = scrollPercent
+}
+
 // to change the theme on load
 function themeCheckByLocalStorage() {
   let theme = localStorage.getItem("theme");
@@ -188,6 +200,7 @@ function removeAlert(alertElem) {
 window.addEventListener("load", themeCheckByLocalStorage);
 window.addEventListener("load", getUserBasketFromLocalStorage);
 window.addEventListener("load", getMainItem);
+window.addEventListener("scroll" , costumeScroll)
 goBackBtn.addEventListener("click", function () {
   history.go(-1);
 });

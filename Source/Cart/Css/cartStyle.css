@@ -120,6 +120,16 @@ body{
     top: 0;
 }
 
+.costumized-scroll-bar{
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    height: 2px;
+    width: 0;
+    position: fixed;
+    top: 0;
+    transition: 0.1s;
+}
+
 #header .logo-container{
     border-radius: 50%;
     overflow: hidden;
