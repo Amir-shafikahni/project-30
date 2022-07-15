@@ -196,7 +196,7 @@ function showAlert(alertName, alertMsg, alertIcon) {
   // to hide the alert automatically after 5sec
   setTimeout(function () {
     hideAlert(alertElem);
-  }, 5000);
+  }, 4000);
 }
 
 // to get the exact button that user has clicked on it

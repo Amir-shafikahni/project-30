@@ -227,6 +227,10 @@ body{
     transform: scale(0.95);
 }
 
+.card-item-container{
+    padding-top: 65px;
+}
+
 .img-container img{
     border-radius: 10px;
 }
