@@ -121,6 +121,8 @@ function cartItemsGenerator(cartItemsArray){
       itemMinusBtn.style.display = "block"
     }
   })
+
+  totalPriceUpdater(userBasket)
 }
 
 // to add the item count by +1
@@ -129,7 +131,6 @@ function itemCountPlus(itemId){
     if(product.id === itemId && product.count < 10){
       product.count++
 
-      totalPriceUpdater(userBasket)
       cartItemsGenerator(userBasket)
       setUserBasketInToLocalStorage(userBasket)
       showAlert("green-alert" , "Your changes are seved successfully" , "bi-check-circle-fill")
@@ -145,7 +146,6 @@ function itemCountMinus(itemId){
     if(product.id === itemId){
       product.count--
 
-      totalPriceUpdater(userBasket)
       cartItemsGenerator(userBasket)
       setUserBasketInToLocalStorage(userBasket)
       showAlert("green-alert" , "Changes are seved successfully" , "bi-check-circle-fill")
@@ -161,7 +161,6 @@ function itemRemover(itemId){
     return item.id !== itemId
   })
 
-  totalPriceUpdater(userBasket)
   cartItemsGenerator(userBasket)
   updateBasketItemsCount(userBasket)
   setUserBasketInToLocalStorage(userBasket)
