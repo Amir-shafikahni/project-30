@@ -107,6 +107,7 @@ function productTemaplateGenerator(product) {
         '<h4 class="card-item-title">'+ product.title +'</h4>'+
       '</div>'+
       '<div class="card-item-discription">'+ product.discription +'</div>'+
+      '<h5 class="card-item-price mt-3 ms-1">'+ product.price +'$</h5>'+
       '<div class="card-item-button text-end col-12 col-md-11 mt-4 mt-lg-5 m-auto">'+
         '<button class="card-item-basket-btn btn mb-5"><span class="button-text">Add To Basket</span></button>'+
       '</div>'+

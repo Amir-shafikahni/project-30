@@ -244,6 +244,11 @@ body{
     text-align: justify;
 }
 
+.card-item-price{
+    color: var(--text-color);
+    font-weight: 500;
+}
+
 .card-item-basket-btn{
     border-color: var(--primary-color);
     color: var(--primary-color);
